@@ -230,7 +230,8 @@ class Capture extends \Lib\Model {
             "-msu_gs_Thermal_Channel.png",   
             "-L3_1.png",                     
             "-L3_2.png",                     
-            "-L3_3.png",                     
+            "-L3_3.png",  
+            "-L3_4.png", 
             "-L3_9.png",                     
             "-L3_10.png"  
          ];

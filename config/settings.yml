@@ -2,14 +2,14 @@
 # base station configurations
 #   latitude: south values are negative
 #   longitude: west values are negative
-latitude: 40.712776
-longitude: -74.005974
+latitude: 55.579
+longitude: 24.263
 altitude: 0.0
 
 #Website language settings
 #   lang_setting: see the 'webpanel/App/Lang' folder for available
 #                 languages (2-letter filename - e.g. ar, bg, de, en, es, nl, sr, ru, it, hu, gr, lt, kr, ro)
-lang_setting: en
+lang_setting: lt
 
 # ntp configurations
 #   ntp_server - if you have a local server (e.g. stratum1), you can use this setting
@@ -51,7 +51,7 @@ test_freq_offset: 0
 noaa_memory_threshold: 50
 meteor_m2_memory_threshold: 10
 
-select_best_overlapping_passes: true
+select_best_overlapping_passes: false
 select_meteor_pass_over_noaa: true
 use_device_string: false
 
@@ -60,24 +60,24 @@ noaa_15_sdr_device_id: 0
 noaa_15_freq_offset: 0
 noaa_15_enable_bias_tee: false
 noaa_15_gain: 29.7
-noaa_15_sun_min_elevation: 6
-noaa_15_sat_min_elevation: 30
+noaa_15_sun_min_elevation: 0
+noaa_15_sat_min_elevation: 5
 
 noaa_18_schedule: true
 noaa_18_sdr_device_id: 0
 noaa_18_freq_offset: 0
 noaa_18_enable_bias_tee: false
 noaa_18_gain: 29.7
-noaa_18_sun_min_elevation: 6
-noaa_18_sat_min_elevation: 30
+noaa_18_sun_min_elevation: 0
+noaa_18_sat_min_elevation: 5
 
 noaa_19_schedule: true
 noaa_19_sdr_device_id: 0
 noaa_19_freq_offset: 0
 noaa_19_enable_bias_tee: false
 noaa_19_gain: 29.7
-noaa_19_sun_min_elevation: 6
-noaa_19_sat_min_elevation: 30
+noaa_19_sun_min_elevation: 0
+noaa_19_sat_min_elevation: 5
 
 meteor_m2_3_schedule: true
 meteor_m2_3_sdr_device_id: 0
@@ -85,8 +85,8 @@ meteor_m2_3_freq_offset: 0
 meteor_m2_3_enable_bias_tee: false
 meteor_m2_3_gain: 29.7
 meteor_m2_3_schedule_sun_min_elevation: -6
-meteor_m2_3_sun_min_elevation: 6
-meteor_m2_3_sat_min_elevation: 30
+meteor_m2_3_sun_min_elevation: 0
+meteor_m2_3_sat_min_elevation: 2
 meteor_m2_3_80k_interleaving: false
 
 meteor_m2_4_schedule: true
@@ -95,16 +95,16 @@ meteor_m2_4_freq_offset: 0
 meteor_m2_4_enable_bias_tee: false
 meteor_m2_4_gain: 29.7
 meteor_m2_4_schedule_sun_min_elevation: -6
-meteor_m2_4_sun_min_elevation: 6
-meteor_m2_4_sat_min_elevation: 30
+meteor_m2_4_sun_min_elevation: 0
+meteor_m2_4_sat_min_elevation: 2
 meteor_m2_4_80k_interleaving: false
 
 elektro_l3_schedule: true
 elektro_l3_sdr_device_id: 0
 elektro_l3_freq_offset: 0
 elektro_l3_enable_bias_tee: false
-elektro_l3_gain: 29.7
-elektro_l3_sun_min_elevation: 6
+elektro_l3_gain: 42
+elektro_l3_sun_min_elevation: -90
 
 # how many days to schedule passes - note this MUST be an even integer,
 # and the current day counts as "1" - passes will be scheduled until midnight
@@ -114,7 +114,7 @@ elektro_l3_sun_min_elevation: 6
 #       value, you must run the schedule script manually and pass the '-x' switch
 #       after re-running the ./install_and_upgrade.sh script to align the variables:
 #           ./scripts/schedule.sh -x
-days_to_schedule_passes: 7
+days_to_schedule_passes: 2
 
 # pruning capabilities - must be configured in cron (see documentation)
 #   delete_oldest_n - how many oldest captures to delete on each run
@@ -124,7 +124,7 @@ delete_older_than_n: 30
 
 # whether audio files should be deleted after images are created
 # if you choose to keep files, they will be automatically deleted after set number of days in delete_files_older_than_days (default is 3 days)
-delete_noaa_audio: false
+delete_noaa_audio: true
 delete_meteor_audio: false
 delete_files_older_than_days: 3
 
@@ -185,9 +185,9 @@ delete_files_older_than_days: 3
 #   noaa_map_country_border_color - color of country borders
 #   noaa_map_state_border_enable - whether to enable state borders in images (Americas only)
 #   noaa_map_state_border_color - color of state borders (Americas only)
-extend_for_annotation: true
-image_annotation_location: 'North'
-produce_polar_az_el_graph: false
+extend_for_annotation: false
+image_annotation_location: 'NorthWest'
+produce_polar_az_el_graph: true
 produce_polar_direction_graph: true
 ground_station_location: ''
 antenna_information: ''
@@ -196,7 +196,7 @@ show_pass_direction: true
 produce_spectrogram: false    #NOTE: the spectrogram option here is available for NOAA only, and the spectrogrma produced is from demodulated audio, not IQ baseband file
 
 noaa_crop_telemetry: false
-produce_noaa_pristine_image: false
+produce_noaa_pristine_image: true
 produce_noaa_pristine_histogram: false
 noaa_daytime_enhancements: 'MSA MSA-precip MCIR MCIR-precip HVC-precip HVCT-precip HVC HVCT ZA therm sea CC HE HF MD BD MB JF JJ LC TA WV NO histeq'
 noaa_nighttime_enhancements: 'MCIR MCIR-precip HVCT ZA therm NO TA sea histeq'
@@ -207,7 +207,7 @@ noaa_thermal_temp_overlay: true
 noaa_thermal_temp_overlay_location: 'NorthEast'
 noaa_map_crosshair_enable: true
 noaa_map_crosshair_color: "0xcc3030"
-noaa_map_grid_degrees: 10.0
+noaa_map_grid_degrees: 0.0
 noaa_map_grid_color: "0xff0000"
 noaa_map_country_border_enable: true
 noaa_map_country_border_color: "0xffff00"
@@ -264,7 +264,7 @@ log_level: DEBUG
 # in the passes view - note that this iframe-driven visualization is
 # by default disabled on "extra-small" devices such as phones due to
 # the processing and space requirements
-enable_satvis: true
+enable_satvis: false
 
 
 # whether to enable the "Coronal mass ejection activity" display
@@ -309,8 +309,9 @@ enable_email_push: false
 email_push_address: test@ifttt.com
 enable_email_schedule_push: false
 enable_discord_push: true
-discord_noaa_webhook_url: 'https://discord.com/api/webhooks/1135901731918717068/ZELG3Sv1fRxQ8KgoYtMMOBYM07az0yIkzeLdad-8WxxhV-F8LhPQdZFFon044awMvLsD'
-discord_meteor_webhook_url: 'https://discord.com/api/webhooks/1135901731918717068/ZELG3Sv1fRxQ8KgoYtMMOBYM07az0yIkzeLdad-8WxxhV-F8LhPQdZFFon044awMvLsD'
+discord_noaa_webhook_url: 'https://discord.com/api/webhooks/1147212977230073866/78DbJLO1bwK5nlmTyUqKzQc8v7N6QmdwmzzRE0ccTFlstzZkHuTG7hRonBIiUDnFPkIb'
+discord_meteor_webhook_url: 'https://discord.com/api/webhooks/1153985880336388136/ysp86t_VZe0YIo7vFDMBKZtzs5_zQEOEeWgics9lweuT524YVX3etRYDMfeuAv2uzsdV'
+discord_elektro_webhook_url: 'https://discord.com/api/webhooks/1280466385281224774/MFxaFmVX7VDIQ-LXPYy7BHI2_ZdBtzvGtl3g3zHhqVits-VwFitcv2d4bZE5zZjjsrST'
 enable_pushover_push: false
 pushover_link_url: 'https://<url-to-webpanel>/captures/listImages'
 pushover_apitoken: ''

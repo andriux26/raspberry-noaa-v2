@@ -12,25 +12,13 @@
     {% endblock %}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+                           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+                           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <title>Raspberry NOAA V2</title>
 
     <link rel="shortcut icon" href="/assets/web_img/favicon.ico" type="image/x-icon"/>
-
-    <style>
-      .green {
-        color: green;
-      }
-      .yellow {
-        color: orange;
-      }
-      .red {
-        color: red;
-      }
-    </style>
   </head>
   <body>
     <header class="mb-3">
@@ -42,32 +30,11 @@
           <li class="nav-item {% if page == 'captures' or page == 'capture'  %} active {% endif %}">
             <a class="nav-link" href="/captures?page_no=1">{{ lang['captures'] }}</a>
           </li>
-
-
-           <li class="nav-item {% if page == 'file' or page == 'file'  %} active {% endif %}">
-            <a class="nav-link" href="/audio.php">{{ lang['file'] }}</a>
-          </li>
-
-
-
-
-
-
           <li class="nav-item {% if page == 'admin' %} active {% endif %}">
             <a class="nav-link" href="/admin/passes">{{ lang['admin'] }}</a>
           </li>
         </ul>
-
-        <!-- Pakeista vieta: disko vietos rodymas pries laiko zona -->
-        <span class="navbar-text hdd-space ml-3">
-          <em>
-            HDD: <span id="disk-free"></span>  <span id="disk-total"></span>   
-            <span id="disk-percent">Loading...</span> 
-          </em>
-        </span>
-
-        <!-- Laiko zonos rodymas po disko vietos -->
-        <span class="navbar-text timezone ml-3">
+        <span class="navbar-text timezone">
           <em>
             {{ constant('Config\\Config::TIMEZONE') }}<br>
             (UTC{{ 'now'|date('P') }})
@@ -93,51 +60,6 @@
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-    <!-- Ajax skriptas HDD vietos rodymui -->
-    <script>
-      function updateDiskSpace() {
-        fetch('/disk_usage.php')
-          .then(response => response.json())
-          .then(data => {
-            // Idedame laisva ir bendra disko vieta
-           
-
-
-
-
-
-
-
-
-
-
-            const diskPercentElement = document.getElementById('disk-percent');
-            const diskUsedPercent = data.disk_used_percent;
-
-            // Nustatome teksto spalva pagal naudojimo procentus tik "disk-percent" elementui
-            if (diskUsedPercent <= 70) {
-              diskPercentElement.className = 'green';
-            } else if (diskUsedPercent <= 90) {
-              diskPercentElement.className = 'yellow';
-            } else {
-              diskPercentElement.className = 'red';
-            }
-
-            // Parodome tik procentu informacija
-            diskPercentElement.innerText = `${diskUsedPercent}%`;
-          })
-          .catch(error => {
-            console.error('Error fetching disk usage:', error);
-            document.getElementById('disk-percent').innerText = 'Error fetching disk space';
-          });
-      }
-
-      // Atlikti uzklausa kas 10 sekundziu
-      setInterval(updateDiskSpace, 10000);
-      // Pirmas atnaujinimas puslapio ikrovimo metu
-      updateDiskSpace();
-    </script>
 
     {% block js_includes %}
     {% endblock %}

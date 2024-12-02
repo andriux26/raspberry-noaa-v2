@@ -25,6 +25,21 @@
   become: yes
   command: ufw allow 22/tcp
 
+
+- name: Allow RTL (Port 1234)
+  become: yes
+  command: ufw allow 1234/tcp
+
+
+- name: Allow spy (Port 5555)
+  become: yes
+  command: ufw allow 5555/tcp
+
+
+
+
+
+
 - name: Allow VNC (Port 5800)
   become: yes
   command: ufw allow 5800/tcp

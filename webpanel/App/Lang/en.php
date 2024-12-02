@@ -32,5 +32,6 @@ return array(
   "successful_delete_capture" => "Successfully deleted capture",
   "successful_delete_pass" => "Successfully deleted pass",
   "travel_direction" => "Direction",
+"file" => "File",
 );
 ?>
