@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="/assets/css/pagination.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+{% endblock %}
+
+{% block body %}
+  {% if status_msg is defined %}
+    {% if status_msg == 'Success' %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ lang['successful_delete_pass'] }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% else %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ status_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% include('Admin/nav.html') %}
+
+  <p class="lead text-center">
+    {{ lang['admin_pass_delete_warning'] }}
+  </p>
+
+ 
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paraso Labas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #333;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 1rem;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Paraso Labas</h1>
+    <p>Isang simple at magandang disenyo ng web page.</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<main>
+    <h2>Welcome!</h2>
+    <p>Maligayang pagdating sa iyong simpleng web page. Pwede mong i-edit ang content dito ayon sa iyong pangangailangan.</p>
+    <p>Subukan mo ring magdagdag ng mga larawan o iba pang elemento para gawing mas maganda ang iyong page.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Paraso Labas. Lahat ng Karapatan ay Nakalaan.</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block js_includes %}
+  <script src="/assets/js/admin.js"></script>
+{% endblock %}
