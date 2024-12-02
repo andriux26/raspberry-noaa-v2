@@ -33,7 +33,7 @@ return array(
   "successful_delete_pass" => "Istrinta",
   "travel_direction" => "Kryptis",
 "log" => "Logas",
-"config" => "Config",
+"config" => "Nustatymai",
 "log" => "Logas",
 "file" => "File",
 
